@@ -18,4 +18,10 @@ class AuthRepository {
     debugPrint('Registration successful for $email');
     return;
   }
+
+  Future<void> logout() async {
+    await Future.delayed(const Duration(seconds: 2));
+    debugPrint('Logout successful');
+    return;
+  }
 }
