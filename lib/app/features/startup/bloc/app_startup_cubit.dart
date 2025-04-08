@@ -17,16 +17,12 @@ class AppStartupCubit extends Cubit<AppStartupState> {
     _updateLoadingState('Starting initialization...');
 
     try {
-      _updateLoadingState('Initializing analytics...');
       await _initializeAnalytics();
-
-      _updateLoadingState('Initializing local storage...');
       await _initializeLocalStorage();
 
       _updateLoadingState('Initializing authentication...');
       final authRepository = await _initializeAuth();
 
-      _updateLoadingState('Initializing services...');
       await _initializeAdditionalServices();
 
       _updateLoadingState('Finalizing...');
@@ -45,25 +41,25 @@ class AppStartupCubit extends Cubit<AppStartupState> {
   }
 
   Future<void> _initializeAnalytics() async {
+    _updateLoadingState('Initializing analytics...');
     await Future.delayed(const Duration(milliseconds: 500));
-    debugPrint('Analytics initialized');
   }
 
   Future<void> _initializeLocalStorage() async {
+    _updateLoadingState('Initializing local storage...');
     await Future.delayed(const Duration(milliseconds: 700));
-    debugPrint('Local storage initialized');
   }
 
   Future<AuthRepository> _initializeAuth() async {
+    _updateLoadingState('Initializing authentication...');
     await Future.delayed(const Duration(milliseconds: 800));
     final authRepository = AuthRepository();
-    debugPrint('Auth repository initialized');
     return authRepository;
   }
 
   Future<void> _initializeAdditionalServices() async {
+    _updateLoadingState('Initializing additional services...');
     await Future.delayed(const Duration(milliseconds: 600));
-    debugPrint('Additional services initialized');
   }
 
   AppException _handleStartupException(dynamic error, StackTrace stackTrace) {
