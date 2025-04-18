@@ -19,6 +19,7 @@ dependencies:
   reactive_forms: ^17.0.1
   freezed_annotation: ^3.0.0
   flutter_svg: ^2.0.17
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
