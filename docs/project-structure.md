@@ -5,9 +5,7 @@ This document outlines the standard project structure for this Flutter starter t
 ```
 .
 ├── lib/                     # Main application source code
-│   ├── main_development.dart
-│   ├── main_staging.dart
-│   ├── main_production.dart
+│   ├── main.dart
 │   │
 │   ├── app/                 # App-level configuration and setup
 │   │   ├── config/          # Environment settings, flavors

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-CardTheme cardTheme(ColorScheme colorScheme) {
-  return CardTheme(
+CardThemeData cardTheme(ColorScheme colorScheme) {
+  return CardThemeData(
     elevation: 0,
     color: colorScheme.surfaceContainer,
     shape: RoundedRectangleBorder(

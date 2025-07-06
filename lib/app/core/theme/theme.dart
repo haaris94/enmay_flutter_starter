@@ -15,19 +15,17 @@ import 'widget_themes/buttons/fab_theme.dart';
 
 // --- Base Theme Configurations ---
 ThemeData _buildBaseTheme(ColorScheme colorScheme, TextTheme textTheme) {
-  // Common Button Style
   final buttonShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0));
-  // Increased vertical padding for a more modern feel
   final buttonPadding = const EdgeInsets.symmetric(horizontal: 24, vertical: 14);
 
   return ThemeData(
     useMaterial3: true,
     brightness: colorScheme.brightness,
     colorScheme: colorScheme,
-    textTheme: textTheme, // Use updated text theme
+    textTheme: textTheme,
     scaffoldBackgroundColor: colorScheme.surface,
     cardTheme: cardTheme(colorScheme),
-    appBarTheme: appBarTheme(colorScheme), // Ensure AppBar uses theme correctly
+    appBarTheme: appBarTheme(colorScheme),
     dividerTheme: dividerTheme(colorScheme),
     inputDecorationTheme: inputDecorationTheme(colorScheme, textTheme),
     elevatedButtonTheme: elevatedButtonTheme(colorScheme, textTheme, buttonShape, buttonPadding),
@@ -35,7 +33,7 @@ ThemeData _buildBaseTheme(ColorScheme colorScheme, TextTheme textTheme) {
     outlinedButtonTheme: outlinedButtonTheme(colorScheme, textTheme, buttonShape, buttonPadding),
     switchTheme: switchTheme(colorScheme),
     radioTheme: radioTheme(colorScheme),
-    checkboxTheme: checkboxTheme(colorScheme), // Checkbox will use primary color by default, which is fine
+    checkboxTheme: checkboxTheme(colorScheme),
     floatingActionButtonTheme: fabTheme(colorScheme),
   );
 }
