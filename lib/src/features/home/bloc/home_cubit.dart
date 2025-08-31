@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/app/data/repositories/auth_repository.dart';
+import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 enum HomeStatus { initial, loading, success, failure }

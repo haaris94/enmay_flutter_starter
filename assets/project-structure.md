@@ -2,7 +2,7 @@
 
 This document outlines the standard project structure for this Flutter starter template. The structure is designed to promote modularity, scalability, testability, and developer productivity by combining a feature-first approach with logical layering for core and data concerns.
 
-```
+```bash
 .
 ├── lib/                     # Main application source code
 │   ├── main.dart

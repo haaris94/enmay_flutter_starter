@@ -1,5 +1,5 @@
-import 'package:enmay_flutter_starter/app/core/exceptions/app_exception.dart';
-import 'package:enmay_flutter_starter/app/data/repositories/auth_repository.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/app_exception.dart';
+import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_startup_state.freezed.dart';

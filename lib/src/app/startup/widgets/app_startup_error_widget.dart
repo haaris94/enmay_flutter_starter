@@ -1,5 +1,5 @@
-import 'package:enmay_flutter_starter/app/core/exceptions/app_exception.dart';
-import 'package:enmay_flutter_starter/app/core/theme/theme.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/app_exception.dart';
+import 'package:enmay_flutter_starter/src/app/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 /// This widget is shown if there is an error while the app is loading

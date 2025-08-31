@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/app/core/widgets/app_icon_button.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

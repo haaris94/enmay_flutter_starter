@@ -1,9 +1,9 @@
-import 'package:enmay_flutter_starter/app/core/exceptions/app_exception.dart';
-import 'package:enmay_flutter_starter/app/features/startup/bloc/app_startup_cubit.dart';
-import 'package:enmay_flutter_starter/app/features/startup/bloc/app_startup_state.dart';
-import 'package:enmay_flutter_starter/app/features/startup/widgets/app_dependencies_provider.dart';
-import 'package:enmay_flutter_starter/app/features/startup/widgets/app_startup_error_widget.dart';
-import 'package:enmay_flutter_starter/app/features/startup/widgets/app_startup_loading_widget.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/app_exception.dart';
+import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_cubit.dart';
+import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_state.dart';
+import 'package:enmay_flutter_starter/src/app/startup/widgets/app_dependencies_provider.dart';
+import 'package:enmay_flutter_starter/src/app/startup/widgets/app_startup_error_widget.dart';
+import 'package:enmay_flutter_starter/src/app/startup/widgets/app_startup_loading_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

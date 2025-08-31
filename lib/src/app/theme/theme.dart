@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/app/core/theme/widget_themes/buttons/text_button_theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/widget_themes/buttons/text_button_theme.dart';
 import 'package:flutter/material.dart';
 import '_colors.dart';
 import '_typography.dart';

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:enmay_flutter_starter/app/core/theme/theme.dart';
-import 'package:enmay_flutter_starter/app/data/repositories/auth_repository.dart';
-import 'package:enmay_flutter_starter/app/features/startup/bloc/app_startup_state.dart';
-import 'package:enmay_flutter_starter/app/routing/routing.dart';
+import 'package:enmay_flutter_starter/src/app/theme/theme.dart';
+import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
+import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_state.dart';
+import 'package:enmay_flutter_starter/src/app/routing/routing.dart';
 
 class AppDependenciesProvider extends StatelessWidget {
   final LoadedState state;

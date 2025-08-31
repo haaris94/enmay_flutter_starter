@@ -1,7 +1,7 @@
-import 'package:enmay_flutter_starter/app/core/theme/theme.dart';
-import 'package:enmay_flutter_starter/app/core/widgets/app_logo.dart';
-import 'package:enmay_flutter_starter/app/features/startup/bloc/app_startup_cubit.dart';
-import 'package:enmay_flutter_starter/app/features/startup/bloc/app_startup_state.dart';
+import 'package:enmay_flutter_starter/src/app/theme/theme.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_logo.dart';
+import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_cubit.dart';
+import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

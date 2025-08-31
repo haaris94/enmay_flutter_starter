@@ -78,10 +78,9 @@ String toString() {
 
 
 class _Loading implements AppStartupState {
-  const _Loading({this.progress = 0.0, this.message = 'Initializing...'});
+  const _Loading({this.message = 'Initializing...'});
   
 
-@JsonKey() final  double progress;
 @JsonKey() final  String message;
 
 /// Create a copy of AppStartupState
@@ -94,16 +93,16 @@ _$LoadingCopyWith<_Loading> get copyWith => __$LoadingCopyWithImpl<_Loading>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading&&(identical(other.progress, progress) || other.progress == progress)&&(identical(other.message, message) || other.message == message));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading&&(identical(other.message, message) || other.message == message));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,progress,message);
+int get hashCode => Object.hash(runtimeType,message);
 
 @override
 String toString() {
-  return 'AppStartupState.loading(progress: $progress, message: $message)';
+  return 'AppStartupState.loading(message: $message)';
 }
 
 
@@ -114,7 +113,7 @@ abstract mixin class _$LoadingCopyWith<$Res> implements $AppStartupStateCopyWith
   factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) _then) = __$LoadingCopyWithImpl;
 @useResult
 $Res call({
- double progress, String message
+ String message
 });
 
 
@@ -131,10 +130,9 @@ class __$LoadingCopyWithImpl<$Res>
 
 /// Create a copy of AppStartupState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? progress = null,Object? message = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
   return _then(_Loading(
-progress: null == progress ? _self.progress : progress // ignore: cast_nullable_to_non_nullable
-as double,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

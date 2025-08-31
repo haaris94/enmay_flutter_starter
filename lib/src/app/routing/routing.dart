@@ -1,10 +1,10 @@
-import 'package:enmay_flutter_starter/app/data/repositories/auth_repository.dart';
-import 'package:enmay_flutter_starter/app/features/auth/bloc/auth_cubit.dart';
-import 'package:enmay_flutter_starter/app/features/auth/screens/login_screen.dart';
-import 'package:enmay_flutter_starter/app/features/auth/screens/register_screen.dart';
-import 'package:enmay_flutter_starter/app/features/auth/screens/forgot_password_screen.dart';
-import 'package:enmay_flutter_starter/app/features/home/bloc/home_cubit.dart';
-import 'package:enmay_flutter_starter/app/features/home/screens/home_screen.dart';
+import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
+import 'package:enmay_flutter_starter/src/features/auth/bloc/auth_cubit.dart';
+import 'package:enmay_flutter_starter/src/features/auth/screens/login_screen.dart';
+import 'package:enmay_flutter_starter/src/features/auth/screens/register_screen.dart';
+import 'package:enmay_flutter_starter/src/features/auth/screens/forgot_password_screen.dart';
+import 'package:enmay_flutter_starter/src/features/home/bloc/home_cubit.dart';
+import 'package:enmay_flutter_starter/src/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

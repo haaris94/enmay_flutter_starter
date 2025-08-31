@@ -1,5 +1,5 @@
-import 'package:enmay_flutter_starter/app/data/repositories/auth_repository.dart';
-import 'package:enmay_flutter_starter/app/routing/routing.dart';
+import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
+import 'package:enmay_flutter_starter/src/app/routing/routing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

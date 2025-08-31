@@ -4,7 +4,7 @@ This document outlines the standardized approach to error handling within this F
 
 ## Core Concepts
 
-1.  **`Failure` (`lib/core/error/failures.dart`):**
+1. **`Failure` (`lib/core/error/failures.dart`):**
 
     - Represents **handled, known error scenarios** that the application logic anticipates (e.g., network unavailable, invalid user input, resource not found).
     - These are **not** raw exceptions but specific classes indicating _why_ an operation failed in a business-logic sense.
@@ -12,20 +12,20 @@ This document outlines the standardized approach to error handling within this F
     - Each `Failure` subclass (e.g., `ServerFailure`, `CacheFailure`, `NetworkFailure`, `ValidationFailure`, `AuthenticationFailure`) contains logic (`getUserFriendlyMessage`) to provide a user-facing, localized message.
     - Returned by Repositories using `Either<Failure, SuccessType>`.
 
-2.  **`DataSourceException` (`lib/core/error/exceptions.dart`):**
+2. **`DataSourceException` (`lib/core/error/exceptions.dart`):**
 
     - Represents **lower-level exceptions** originating from data sources (network client, local database, external SDKs).
     - Examples: `ServerException` (for HTTP errors), `CacheException` (for database errors), `AuthenticationException` (for auth provider errors), `PermissionDeniedException`.
     - These are **thrown** by data source implementations.
     - They are **caught** within the Repository layer and **mapped** to corresponding `Failure` types. They generally should _not_ leak beyond the data layer.
 
-3.  **`Either<L, R>` (from `dartz` package):**
+3. **`Either<L, R>` (from `dartz` package):**
 
     - A functional programming type used to represent a value that can be one of two types: `Left` (typically used for errors/failures) or `Right` (typically used for success values).
     - Repositories return `Future<Either<Failure, SuccessType>>`. This makes it explicit that an operation can either fail (returning a `Failure`) or succeed (returning the expected data).
     - This avoids throwing exceptions for handled error cases across layer boundaries and encourages explicit error handling in the presentation layer.
 
-4.  **Unhandled Exceptions:**
+4. **Unhandled Exceptions:**
     - These are unexpected errors (runtime errors, programming bugs) that are not caught by the standard `try-catch` blocks in the repositories.
     - These should be caught by a global error handler (e.g., using `runZonedGuarded`) and reported to an error tracking service (like Sentry or Firebase Crashlytics).
 
@@ -33,24 +33,24 @@ This document outlines the standardized approach to error handling within this F
 
 The typical flow for handling errors originating from data operations is:
 
-1.  **Data Source:** An operation fails (e.g., network request returns 401, database query fails). The data source implementation **throws** a specific `DataSourceException` (e.g., `AuthenticationException`, `CacheException`).
-2.  **Repository:** The repository method calling the data source is wrapped in a `try-catch` block.
+1. **Data Source:** An operation fails (e.g., network request returns 401, database query fails). The data source implementation **throws** a specific `DataSourceException` (e.g., `AuthenticationException`, `CacheException`).
+2. **Repository:** The repository method calling the data source is wrapped in a `try-catch` block.
     - It **catches** specific `DataSourceException` subtypes and maps them to corresponding `Failure` types (e.g., `catch (e) { return Left(AuthenticationFailure()); }`).
     - It **catches** generic `Exception`s and maps them to `UnexpectedFailure` to handle unforeseen issues gracefully (`catch (e, s) { return Left(UnexpectedFailure(originalException: e, stackTrace: s)); }`).
     - On success, it wraps the result in `Right`.
     - The method returns `Future<Either<Failure, SuccessType>>`.
-3.  **Use Case (Optional):** If using Use Cases, they typically just forward the `Either` result from the repository.
-4.  **Presentation (Bloc/Cubit):**
+3. **Use Case (Optional):** If using Use Cases, they typically just forward the `Either` result from the repository.
+4. **Presentation (Bloc/Cubit):**
     - Calls the repository (or use case) method.
     - Uses the `.fold( (failure) => ..., (successData) => ... )` method on the returned `Either`.
     - If `Left(failure)`: Emits an error state containing the `Failure` object (e.g., `AuthState.error(failure)`).
     - If `Right(successData)`: Emits a success state with the data (e.g., `AuthState.authenticated(user)`).
-5.  **UI (Widget):**
+5. **UI (Widget):**
     - Listens to the Bloc/Cubit state using `BlocListener` or `BlocBuilder`.
     - When an error state is detected, it extracts the `Failure` object.
     - Calls `failure.getUserFriendlyMessage(context)` to get the appropriate localized message.
     - Displays the message to the user (e.g., using a `SnackBar`, `AlertDialog`, or inline text).
-6.  **Localization:** The `getUserFriendlyMessage` method within each `Failure` class (or a helper/extension) looks up the appropriate localized string based on the `Failure` type and the current locale.
+6. **Localization:** The `getUserFriendlyMessage` method within each `Failure` class (or a helper/extension) looks up the appropriate localized string based on the `Failure` type and the current locale.
 
 ## Implementing Error Handling in a New Module (Example: Auth Feature)
 
@@ -305,8 +305,8 @@ Modify `Failure.getUserFriendlyMessage` implementations to use `AppLocalizations
 
 Unhandled exceptions (those not caught and converted to `Failure` by repositories) should be reported.
 
-1.  **Add Dependency:** Add `sentry_flutter` or `firebase_crashlytics` to `pubspec.yaml`.
-2.  **Initialization:** In `main_*.dart`, wrap `runApp` with `runZonedGuarded` and initialize the reporting SDK.
+1. **Add Dependency:** Add `sentry_flutter` or `firebase_crashlytics` to `pubspec.yaml`.
+2. **Initialization:** In `main_*.dart`, wrap `runApp` with `runZonedGuarded` and initialize the reporting SDK.
 
 ```dart
 import 'dart:async';
@@ -350,6 +350,6 @@ Future<void> main() async {
 }
 ```
 
-3.  **Reporting Handled Failures (Optional):** You might choose to explicitly report certain `Failure` types (like `ServerFailure` or `UnexpectedFailure`) to your reporting service from the Bloc/Cubit or Repository for more insight, even though they are "handled".
+3. **Reporting Handled Failures (Optional):** You might choose to explicitly report certain `Failure` types (like `ServerFailure` or `UnexpectedFailure`) to your reporting service from the Bloc/Cubit or Repository for more insight, even though they are "handled".
 
 This comprehensive strategy ensures errors are managed predictably, users receive clear feedback, and critical issues are logged for developers.
