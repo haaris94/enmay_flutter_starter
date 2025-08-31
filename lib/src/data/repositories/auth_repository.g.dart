@@ -18,7 +18,7 @@ final class AuthRepositoryProvider
         argument: null,
         retry: null,
         name: r'authRepositoryProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -45,7 +45,7 @@ final class AuthRepositoryProvider
   }
 }
 
-String _$authRepositoryHash() => r'50a1d563eb512e3d26c62f7d6917fbcc58928eef';
+String _$authRepositoryHash() => r'b1845c21e89227820af003689c9437f06a070ee3';
 
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
