@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/core/exceptions/app_exception.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/legacy/app_exception.dart';
 import 'package:enmay_flutter_starter/src/app/theme/theme.dart';
 import 'package:flutter/material.dart';
 

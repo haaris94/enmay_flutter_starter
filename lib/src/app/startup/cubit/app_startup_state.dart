@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/core/exceptions/app_exception.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/legacy/app_exception.dart';
 import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

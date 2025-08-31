@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:enmay_flutter_starter/src/core/exceptions/app_exception.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/legacy/app_exception.dart';
 import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
 import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_state.dart';
 import 'package:flutter/foundation.dart';
