@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "15625571575",
+    "project_id": "flutter-starter-df0a4",
+    "storage_bucket": "flutter-starter-df0a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15625571575:android:6ae8c784a3bffa2b3d97f2",
+        "android_client_info": {
+          "package_name": "com.example.enmay_flutter_starter.enmay_flutter_starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcvsF2TX7DKMeRKuFDWIjFvJrgayK6XRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
