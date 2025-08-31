@@ -5,6 +5,14 @@ enum ErrorContext {
   logout,
   forgotPassword,
   verifyEmail,
+  googleSignIn,
+  appleSignIn,
+  linkProvider,
+  reauthenticate,
+  updateEmail,
+  updatePassword,
+  deleteAccount,
+  sendEmailVerification,
 
   // Todo contexts
   fetchingTodos,

@@ -16,11 +16,55 @@
   "authentication": {
     "login": {
       "title": "Login Failed",
-      "message": "Please check your email and password"
+      "message": "Invalid email or password. Please check your credentials and try again"
     },
     "register": {
       "title": "Registration Failed",
-      "message": "Unable to create account. Please try again"
+      "message": "Unable to create account. The email might already be in use"
+    },
+    "logout": {
+      "title": "Logout Failed",
+      "message": "Unable to sign out. Please try again"
+    },
+    "forgotPassword": {
+      "title": "Password Reset Failed",
+      "message": "Unable to send password reset email. Please check the email address"
+    },
+    "verifyEmail": {
+      "title": "Email Verification Failed",
+      "message": "Unable to verify email. Please try again"
+    },
+    "googleSignIn": {
+      "title": "Google Sign In Failed",
+      "message": "Unable to sign in with Google. Please try again"
+    },
+    "appleSignIn": {
+      "title": "Apple Sign In Failed",
+      "message": "Unable to sign in with Apple. Please try again"
+    },
+    "linkProvider": {
+      "title": "Account Linking Failed",
+      "message": "Unable to link account. The provider might already be linked"
+    },
+    "reauthenticate": {
+      "title": "Re-authentication Failed",
+      "message": "Please verify your password to continue"
+    },
+    "updateEmail": {
+      "title": "Email Update Failed",
+      "message": "Unable to update email. Please re-authenticate and try again"
+    },
+    "updatePassword": {
+      "title": "Password Update Failed",
+      "message": "Unable to update password. Please re-authenticate and try again"
+    },
+    "deleteAccount": {
+      "title": "Account Deletion Failed",
+      "message": "Unable to delete account. Please re-authenticate and try again"
+    },
+    "sendEmailVerification": {
+      "title": "Email Verification Failed",
+      "message": "Unable to send verification email. Please try again"
     },
     "fallback": {
       "title": "Authentication Error",
@@ -47,7 +91,7 @@
       "message": "Unable to access storage"
     }
   },
-  "external_api": {
+  "externalApi": {
     "fallback": {
       "title": "Service Error",
       "message": "External service is currently unavailable"
@@ -57,6 +101,86 @@
     "fallback": {
       "title": "Something went wrong",
       "message": "An unexpected error occurred. Please try again"
+    }
+  },
+  "emailNotVerified": {
+    "login": {
+      "title": "Email Not Verified",
+      "message": "Please verify your email before signing in"
+    },
+    "fallback": {
+      "title": "Email Verification Required",
+      "message": "Please check your email and click the verification link"
+    }
+  },
+  "userDisabled": {
+    "login": {
+      "title": "Account Disabled",
+      "message": "Your account has been disabled. Please contact support"
+    },
+    "fallback": {
+      "title": "Account Disabled",
+      "message": "This account has been disabled. Contact support for assistance"
+    }
+  },
+  "tooManyRequests": {
+    "login": {
+      "title": "Too Many Attempts",
+      "message": "Too many failed login attempts. Please wait before trying again"
+    },
+    "register": {
+      "title": "Too Many Requests",
+      "message": "Too many registration attempts. Please wait before trying again"
+    },
+    "forgotPassword": {
+      "title": "Too Many Requests",
+      "message": "Too many password reset requests. Please wait before trying again"
+    },
+    "fallback": {
+      "title": "Rate Limited",
+      "message": "Too many requests. Please wait a few minutes and try again"
+    }
+  },
+  "providerAlreadyLinked": {
+    "linkProvider": {
+      "title": "Already Linked",
+      "message": "This provider is already linked to your account"
+    },
+    "fallback": {
+      "title": "Provider Already Linked",
+      "message": "This account is already linked to another provider"
+    }
+  },
+  "weakPassword": {
+    "register": {
+      "title": "Weak Password",
+      "message": "Password is too weak. Use at least 6 characters with letters and numbers"
+    },
+    "updatePassword": {
+      "title": "Weak Password",
+      "message": "New password is too weak. Use at least 6 characters with letters and numbers"
+    },
+    "fallback": {
+      "title": "Password Too Weak",
+      "message": "Please choose a stronger password with at least 6 characters"
+    }
+  },
+  "operationNotAllowed": {
+    "register": {
+      "title": "Registration Disabled",
+      "message": "Email/password registration is currently disabled"
+    },
+    "googleSignIn": {
+      "title": "Google Sign In Disabled",
+      "message": "Google sign-in is not enabled for this app"
+    },
+    "appleSignIn": {
+      "title": "Apple Sign In Disabled",
+      "message": "Apple sign-in is not enabled for this app"
+    },
+    "fallback": {
+      "title": "Operation Not Allowed",
+      "message": "This sign-in method is not enabled"
     }
   }
 }

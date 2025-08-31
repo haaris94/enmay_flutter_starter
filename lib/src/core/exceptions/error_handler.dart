@@ -53,7 +53,33 @@ class ErrorHandler {
   }
 
   static ErrorInfo _handleFirebaseAuthException(FirebaseAuthException exception) {
-    return ErrorInfo(ErrorType.authentication, ErrorSeverity.high);
+    switch (exception.code) {
+      case 'user-not-found':
+      case 'wrong-password':
+      case 'invalid-credential':
+      case 'invalid-email':
+        return ErrorInfo(ErrorType.authentication, ErrorSeverity.medium);
+      case 'email-already-in-use':
+        return ErrorInfo(ErrorType.authentication, ErrorSeverity.low);
+      case 'email-not-verified':
+        return ErrorInfo(ErrorType.emailNotVerified, ErrorSeverity.medium);
+      case 'weak-password':
+        return ErrorInfo(ErrorType.weakPassword, ErrorSeverity.low);
+      case 'user-disabled':
+        return ErrorInfo(ErrorType.userDisabled, ErrorSeverity.high);
+      case 'too-many-requests':
+        return ErrorInfo(ErrorType.tooManyRequests, ErrorSeverity.medium);
+      case 'operation-not-allowed':
+        return ErrorInfo(ErrorType.operationNotAllowed, ErrorSeverity.high);
+      case 'requires-recent-login':
+        return ErrorInfo(ErrorType.authentication, ErrorSeverity.medium);
+      case 'provider-already-linked':
+        return ErrorInfo(ErrorType.providerAlreadyLinked, ErrorSeverity.low);
+      case 'credential-already-in-use':
+        return ErrorInfo(ErrorType.authentication, ErrorSeverity.medium);
+      default:
+        return ErrorInfo(ErrorType.authentication, ErrorSeverity.high);
+    }
   }
 
   static void _logToConsole(Exception exception, ErrorContext context) {
@@ -76,6 +102,7 @@ class ErrorHandler {
 
     return Failure(title: title, message: message, type: errorType);
   }
+
 }
 
 class ErrorInfo {
