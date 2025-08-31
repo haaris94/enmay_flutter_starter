@@ -1,5 +1,5 @@
 import 'package:enmay_flutter_starter/src/core/exceptions/legacy/app_exception.dart';
-import 'package:enmay_flutter_starter/src/app/theme/theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 /// This widget is shown if there is an error while the app is loading
@@ -14,7 +14,7 @@ class AppStartupErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Theme(
-        data: darkTheme,
+        data: AppTheme.darkTheme,
         child: Scaffold(
           appBar: AppBar(title: const Text('Error'), centerTitle: true),
           body: Center(

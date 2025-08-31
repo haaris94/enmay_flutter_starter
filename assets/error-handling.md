@@ -350,6 +350,6 @@ Future<void> main() async {
 }
 ```
 
-3. **Reporting Handled Failures (Optional):** You might choose to explicitly report certain `Failure` types (like `ServerFailure` or `UnexpectedFailure`) to your reporting service from the Bloc/Cubit or Repository for more insight, even though they are "handled".
+- **Reporting Handled Failures (Optional):** You might choose to explicitly report certain `Failure` types (like `ServerFailure` or `UnexpectedFailure`) to your reporting service from the Bloc/Cubit or Repository for more insight, even though they are "handled".
 
 This comprehensive strategy ensures errors are managed predictably, users receive clear feedback, and critical issues are logged for developers.

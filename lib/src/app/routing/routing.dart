@@ -1,35 +1,33 @@
-import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
-import 'package:enmay_flutter_starter/src/features/auth/bloc/auth_cubit.dart';
-import 'package:enmay_flutter_starter/src/features/auth/screens/login_screen.dart';
-import 'package:enmay_flutter_starter/src/features/auth/screens/register_screen.dart';
-import 'package:enmay_flutter_starter/src/features/auth/screens/forgot_password_screen.dart';
-import 'package:enmay_flutter_starter/src/features/home/bloc/home_cubit.dart';
+import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/login_screen.dart';
+import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/register_screen.dart';
+import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:enmay_flutter_starter/src/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'routing.g.dart';
 
 enum AppRoutes { home, login, register, forgotPassword, profile }
 
-final rootNavigatorKey = GlobalKey<NavigatorState>();
+GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
-class AppRouter {
-  AppRouter._();
+String _initialLocation = '/home';
 
-  // Define initial route as string with leading slash
-  static const initialLocation = '/home';
-
-  static GoRouter get router => GoRouter(
-    navigatorKey: rootNavigatorKey,
-    initialLocation: initialLocation,
-    // refreshListenable: RouteGuard(context.read<UserRepository>().currentUserStream),
+@Riverpod(keepAlive: true)
+GoRouter goRouter(Ref ref) {
+  return GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    initialLocation: _initialLocation,
+    // refreshListenable: RouteGuard(ref.read(authRepositoryProvider).currentUserStream),
     routes: [
       ShellRoute(
-        builder: (context, state, child) {
-          return BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>()), child: child);
-        },
         routes: [
-          GoRoute(path: '/login', name: AppRoutes.login.name, builder: (context, state) => const LoginScreen()),
+          GoRoute(
+            path: '/login', 
+            name: AppRoutes.login.name, 
+            builder: (context, state) => const LoginScreen()
+          ),
           GoRoute(
             path: '/register',
             name: AppRoutes.register.name,
@@ -45,11 +43,7 @@ class AppRouter {
       GoRoute(
         path: '/home',
         name: AppRoutes.home.name,
-        builder:
-            (context, state) => BlocProvider(
-              create: (context) => HomeCubit(authRepository: context.read<AuthRepository>()),
-              child: const HomeScreen(),
-            ),
+        builder: (context, state) => const HomeScreen(),
       ),
     ],
     debugLogDiagnostics: true,

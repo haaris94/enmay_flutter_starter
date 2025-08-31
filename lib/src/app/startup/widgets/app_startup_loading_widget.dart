@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/app/theme/theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/app_logo.dart';
 import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_cubit.dart';
 import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_state.dart';
@@ -15,7 +15,7 @@ class AppStartupLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Theme(
-        data: darkTheme,
+        data: AppTheme.darkTheme,
         child: Scaffold(
           body: SafeArea(
             child: Center(

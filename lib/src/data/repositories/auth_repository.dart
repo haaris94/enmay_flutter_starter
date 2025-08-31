@@ -2,7 +2,13 @@ import 'package:enmay_flutter_starter/src/core/constants/enums/error_context.dar
 import 'package:enmay_flutter_starter/src/core/exceptions/error_handler.dart';
 import 'package:enmay_flutter_starter/src/core/exceptions/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 // import 'package:google_sign_in/google_sign_in.dart';
+
+part 'auth_repository.g.dart';
+
+@riverpod
+AuthRepository authRepository(Ref ref) => AuthRepository();
 
 class AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;

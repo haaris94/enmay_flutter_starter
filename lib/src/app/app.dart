@@ -1,4 +1,3 @@
-import 'package:enmay_flutter_starter/src/core/exceptions/legacy/app_exception.dart';
 import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_cubit.dart';
 import 'package:enmay_flutter_starter/src/app/startup/cubit/app_startup_state.dart';
 import 'package:enmay_flutter_starter/src/app/startup/widgets/app_dependencies_provider.dart';
@@ -40,11 +39,11 @@ class _AppStartupStateHandler extends StatelessWidget {
         // Error state
         else if (state.toString().contains('error')) {
           // Extract the exception by downcasting
-          final appException = (state as dynamic).appException as AppException;
-          return AppStartupErrorWidget(
-            appException: appException,
-            onRetry: () => context.read<AppStartupCubit>().initializeServices(),
-          );
+          // final appException = (state as dynamic).appException as AppException;
+          // return AppStartupErrorWidget(
+          //   appException: appException,
+          //   onRetry: () => context.read<AppStartupCubit>().initializeServices(),
+          // );
         }
         // Fallback
         else {
