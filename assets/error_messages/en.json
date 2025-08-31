@@ -1,0 +1,62 @@
+{
+  "network": {
+    "login": {
+      "title": "Connection Failed",
+      "message": "Please check your internet connection and try logging in again"
+    },
+    "fetchingTodos": {
+      "title": "Can't Load Tasks",
+      "message": "Unable to load your tasks. Please check your connection"
+    },
+    "fallback": {
+      "title": "Connection Error",
+      "message": "Please check your internet connection and try again"
+    }
+  },
+  "authentication": {
+    "login": {
+      "title": "Login Failed",
+      "message": "Please check your email and password"
+    },
+    "register": {
+      "title": "Registration Failed",
+      "message": "Unable to create account. Please try again"
+    },
+    "fallback": {
+      "title": "Authentication Error",
+      "message": "Authentication failed. Please try again"
+    }
+  },
+  "validation": {
+    "creatingTodo": {
+      "title": "Invalid Data",
+      "message": "Please check your task details and try again"
+    },
+    "fallback": {
+      "title": "Invalid Input",
+      "message": "Please check your input and try again"
+    }
+  },
+  "storage": {
+    "fetchingTodos": {
+      "title": "Storage Error",
+      "message": "Unable to access local storage"
+    },
+    "fallback": {
+      "title": "Storage Error",
+      "message": "Unable to access storage"
+    }
+  },
+  "external_api": {
+    "fallback": {
+      "title": "Service Error",
+      "message": "External service is currently unavailable"
+    }
+  },
+  "unknown": {
+    "fallback": {
+      "title": "Something went wrong",
+      "message": "An unexpected error occurred. Please try again"
+    }
+  }
+}
