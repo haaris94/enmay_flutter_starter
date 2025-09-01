@@ -1,5 +1,4 @@
 import 'package:enmay_flutter_starter/src/app/routing/route_guard.dart';
-import 'package:enmay_flutter_starter/src/app/startup/provider/app_startup_provider.dart';
 import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/login_screen.dart';
 import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/register_screen.dart';
 import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/forgot_password_screen.dart';
@@ -49,25 +48,21 @@ GoRouter goRouter(Ref ref) {
       return null;
     },
     routes: [
-      // Public routes (authentication)
-      ShellRoute(
-        routes: [
-          GoRoute(
-            path: '/login', 
-            name: AppRoutes.login.name, 
-            builder: (context, state) => const LoginScreen()
-          ),
-          GoRoute(
-            path: '/register',
-            name: AppRoutes.register.name,
-            builder: (context, state) => const RegisterScreen(),
-          ),
-          GoRoute(
-            path: '/forgot-password',
-            name: AppRoutes.forgotPassword.name,
-            builder: (context, state) => const ForgotPasswordScreen(),
-          ),
-        ],
+      // Public routes
+      GoRoute(
+        path: '/login', 
+        name: AppRoutes.login.name, 
+        builder: (context, state) => const LoginScreen()
+      ),
+      GoRoute(
+        path: '/register',
+        name: AppRoutes.register.name,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: '/forgot-password',
+        name: AppRoutes.forgotPassword.name,
+        builder: (context, state) => const ForgotPasswordScreen(),
       ),
       // Protected routes
       GoRoute(
