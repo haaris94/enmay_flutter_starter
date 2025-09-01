@@ -3,7 +3,6 @@ import 'package:enmay_flutter_starter/src/core/exceptions/failure.dart';
 import 'package:enmay_flutter_starter/src/core/constants/enums/error_context.dart';
 import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
 import 'package:enmay_flutter_starter/src/providers/services/service_providers.dart';
-import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_startup_provider.g.dart';
@@ -26,49 +25,44 @@ class AppStartup extends _$AppStartup {
   }
 
   Future<void> _initializeServices() async {
-    await _initializeSharedPreferences();
-    await _initializeAuthRepository();
+    await _initializeService(
+      initFunction: () async => await ref.watch(sharedPreferencesProvider.future),
+      context: ErrorContext.appStartup,
+      genericFailureTitle: 'Startup Error',
+      genericFailureMessage: 'Failed to initialize app storage. Please retry or restart the app.',
+      genericFailureType: ErrorType.storage,
+    );
+    await _initializeService(
+      initFunction: () async => ref.watch(authRepositoryProvider),
+      context: ErrorContext.appStartup,
+      genericFailureTitle: 'Authentication Error',
+      genericFailureMessage: 'Failed to initialize authentication. Please retry or restart the app.',
+      genericFailureType: ErrorType.authentication,
+    );
   }
 
-  Future<void> _initializeSharedPreferences() async {
-    try {
-      await ref.watch(sharedPreferencesProvider.future);
-    } catch (error, stackTrace) {
-      
-      if (error is Exception) {
-        final failure = ErrorHandler.handle(error, context: ErrorContext.appStartup);
-        throw failure;
-      } else {
-        throw const Failure(
-          title: 'Startup Error',
-          message: 'Failed to initialize app storage. Please restart the app.',
-          type: ErrorType.storage,
-        );
-      }
-    }
-  }
 
-  Future<void> _initializeAuthRepository() async {
+  // Generic Service Initialization method
+  Future<void> _initializeService({
+    required Future<dynamic> Function() initFunction,
+    required ErrorContext context,
+    required String genericFailureTitle,
+    required String genericFailureMessage,
+    required ErrorType genericFailureType,
+  }) async {
     try {
-      ref.watch(authRepositoryProvider);
+      await initFunction();
     } catch (error, stackTrace) {
-      debugPrint('Startup: AuthRepository initialization failed - $error');
-      if (kDebugMode) {
-        debugPrint('StackTrace: $stackTrace');
-      }
-      
       if (error is Exception) {
-        final failure = ErrorHandler.handle(error, context: ErrorContext.appStartup);
+        final failure = ErrorHandler.handle(error, stackTrace: stackTrace, context: context);
         throw failure;
       } else {
-        throw const Failure(
-          title: 'Authentication Error',
-          message: 'Failed to initialize authentication. Please restart the app.',
-          type: ErrorType.authentication,
+        throw Failure(
+          title: genericFailureTitle,
+          message: genericFailureMessage,
+          type: genericFailureType,
         );
       }
     }
   }
 }
-
-
