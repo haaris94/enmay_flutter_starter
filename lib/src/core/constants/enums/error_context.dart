@@ -1,4 +1,6 @@
 enum ErrorContext {
+  appStartup,
+
   // Auth contexts
   login,
   register,

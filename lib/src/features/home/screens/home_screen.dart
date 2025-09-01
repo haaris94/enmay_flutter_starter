@@ -1,3 +1,4 @@
+import 'package:enmay_flutter_starter/src/core/logging/console_logger.dart';
 import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
 import 'package:enmay_flutter_starter/src/app/routing/routing.dart';
 import 'package:flutter/material.dart';
@@ -9,17 +10,53 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final logger = ref.watch(consoleLoggerProvider);
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
       ),
       body: Center(
-        child: TextButton(
-          onPressed: () {
-            ref.read(authRepositoryProvider).signOut();
-            context.pushReplacementNamed(AppRoutes.login.name);
-          },
-          child: const Text('Logout'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                logger.debug('Debug message from home screen');
+              },
+              child: const Text('Test Debug Log'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                logger.info('Info message from home screen');
+              },
+              child: const Text('Test Info Log'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                logger.warning('Warning message from home screen');
+              },
+              child: const Text('Test Warning Log'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                logger.error('Error message from home screen');
+              },
+              child: const Text('Test Error Log'),
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                logger.info('User logging out');
+                ref.read(authRepositoryProvider).signOut();
+                context.pushReplacementNamed(AppRoutes.login.name);
+              },
+              child: const Text('Logout'),
+            ),
+          ],
         ),
       ),
     );

@@ -182,5 +182,27 @@
       "title": "Operation Not Allowed",
       "message": "This sign-in method is not enabled"
     }
+  },
+  "appStartup": {
+    "network": {
+      "title": "Startup Failed",
+      "message": "Unable to initialize the app. Please check your internet connection and try again"
+    },
+    "authentication": {
+      "title": "Authentication Service Failed",
+      "message": "Unable to initialize authentication. Please restart the app"
+    },
+    "storage": {
+      "title": "Storage Service Failed", 
+      "message": "Unable to access local storage. Please restart the app"
+    },
+    "unknown": {
+      "title": "App Startup Failed",
+      "message": "Failed to start the app. Please restart and try again"
+    },
+    "fallback": {
+      "title": "Startup Error",
+      "message": "App failed to start properly. Please restart the app"
+    }
   }
 }

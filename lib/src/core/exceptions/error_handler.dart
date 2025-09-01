@@ -3,21 +3,35 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:enmay_flutter_starter/src/core/constants/enums/error_context.dart';
 import 'package:enmay_flutter_starter/src/core/exceptions/error_messages.dart';
+import 'package:enmay_flutter_starter/src/core/exceptions/crashlytics_client.dart';
 import 'package:enmay_flutter_starter/src/core/exceptions/failure.dart';
+import 'package:enmay_flutter_starter/src/core/logging/console_logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:logger/logger.dart';
 
 enum ErrorSeverity { low, medium, high, critical }
 
 class ErrorHandler {
-  static final Logger _logger = Logger();
+  static final ConsoleLogger _logger = ConsoleLogger();
+  static final CrashlyticsClient _crashlyticsClient = CrashlyticsClient();
 
-  static Failure handle(Exception exception, {ErrorContext context = ErrorContext.unknown}) {
+  static Failure handle(
+    Exception exception, {
+    ErrorContext context = ErrorContext.unknown,
+    StackTrace? stackTrace,
+    Map<String, dynamic>? additionalData,
+    bool isFatal = false,
+  }) {
     final errorInfo = _classifyError(exception);
 
     _logToConsole(exception, context);
-    _logToCrashlytics(exception, errorInfo.severity, context);
+    _logToCrashlytics(
+      exception,
+      errorInfo.severity,
+      context,
+      stackTrace: stackTrace,
+      additionalData: additionalData,
+      isFatal: isFatal,
+    );
 
     return _createFailure(errorInfo.type, context);
   }
@@ -83,17 +97,25 @@ class ErrorHandler {
   }
 
   static void _logToConsole(Exception exception, ErrorContext context) {
-    _logger.e('[$context] ${exception.toString()}');
+    _logger.error('[$context] ${exception.toString()}');
   }
 
-  static void _logToCrashlytics(Exception exception, ErrorSeverity severity, ErrorContext context) {
-    if (severity == ErrorSeverity.high || severity == ErrorSeverity.critical) {
-      FirebaseCrashlytics.instance.recordError(
-        exception,
-        StackTrace.current,
-        information: ['Context: $context', 'Severity: $severity'],
-      );
-    }
+  static void _logToCrashlytics(
+    Exception exception,
+    ErrorSeverity severity,
+    ErrorContext context, {
+    StackTrace? stackTrace,
+    Map<String, dynamic>? additionalData,
+    bool isFatal = false,
+  }) {
+    _crashlyticsClient.logError(
+      exception: exception,
+      severity: severity,
+      context: context,
+      stackTrace: stackTrace,
+      additionalData: additionalData,
+      isFatal: isFatal,
+    );
   }
 
   static Failure _createFailure(ErrorType errorType, ErrorContext context) {
