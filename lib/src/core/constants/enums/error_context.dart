@@ -22,6 +22,10 @@ enum ErrorContext {
   updatingTodo,
   deletingTodo,
 
+  // Paywall contexts
+  inAppPurchase,
+  localStorage,
+
   // Generic contexts
   unknown,
 }

@@ -48,6 +48,17 @@ class HomeScreen extends ConsumerWidget {
               child: const Text('Test Error Log'),
             ),
             const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.pushNamed(AppRoutes.paywall.name);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+              ),
+              child: const Text('Test Paywall'),
+            ),
+            const SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 logger.info('User logging out');

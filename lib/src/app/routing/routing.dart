@@ -3,13 +3,14 @@ import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/log
 import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/register_screen.dart';
 import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:enmay_flutter_starter/src/features/home/screens/home_screen.dart';
+import 'package:enmay_flutter_starter/src/features/paywall/presentation/screens/paywall_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'routing.g.dart';
 
-enum AppRoutes { home, login, register, forgotPassword, profile }
+enum AppRoutes { home, login, register, forgotPassword, profile, paywall }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -29,14 +30,16 @@ GoRouter goRouter(Ref ref) {
       final currentScreen = state.uri.toString();
       
       final publicRoutes = ['/login', '/register', '/forgot-password'];
+      final paywallRoutes = ['/paywall'];
       final isPublicRoute = publicRoutes.contains(currentScreen);
+      final isPaywallRoute = paywallRoutes.contains(currentScreen);
       
-      if (!isAuthenticated && !isPublicRoute) {
+      if (!isAuthenticated && !isPublicRoute && !isPaywallRoute) {
         return '/login';
       }
       
       // If user is authenticated but email not verified and trying to access protected routes
-      if (isAuthenticated && !isEmailVerified && !isPublicRoute) {
+      if (isAuthenticated && !isEmailVerified && !isPublicRoute && !isPaywallRoute) {
         // You can redirect to an email verification screen here if you have one
         // For now, we'll allow access but you might want to handle this differently
       }
@@ -69,6 +72,12 @@ GoRouter goRouter(Ref ref) {
         path: '/home',
         name: AppRoutes.home.name,
         builder: (context, state) => const HomeScreen(),
+      ),
+      // Paywall route (accessible to both authenticated and unauthenticated users)
+      GoRoute(
+        path: '/paywall',
+        name: AppRoutes.paywall.name,
+        builder: (context, state) => const PaywallScreen(),
       ),
     ],
     debugLogDiagnostics: true,
