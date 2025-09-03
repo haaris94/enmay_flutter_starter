@@ -6,6 +6,7 @@ import 'package:enmay_flutter_starter/src/features/settings/widgets/settings_til
 import 'package:enmay_flutter_starter/src/core/exceptions/error_handler.dart';
 import 'package:enmay_flutter_starter/src/core/constants/enums/error_context.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -194,6 +195,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           SettingsSection(
             title: 'Support',
             children: [
+              SettingsTile(
+                leading: Icon(
+                  Icons.feedback_outlined,
+                  color: appColors.primary,
+                ),
+                title: 'Send Feedback',
+                subtitle: 'Report bugs or share suggestions',
+                trailing: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 16,
+                  color: appColors.mutedForeground,
+                ),
+                onTap: () => _showFeedback(context),
+              ),
               SettingsTile(
                 leading: Icon(
                   Icons.help_outline,
@@ -567,6 +582,24 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     
     // You can detect platform and use appropriate URL
     await _launchURL(appStoreUrl);
+  }
+
+  void _showFeedback(BuildContext context) {
+    BetterFeedback.of(context).show((UserFeedback feedback) {
+      // For now, we'll just show a confirmation message
+      // Later this will be sent to Sentry when feedback_sentry is integrated
+      final appColors = Theme.of(context).extension<AppColors>()!;
+      
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Thank you for your feedback! We appreciate your input.'),
+            backgroundColor: appColors.primary,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    });
   }
 
   String _getThemeModeDescription(BuildContext context) {
