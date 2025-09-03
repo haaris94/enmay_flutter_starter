@@ -25,7 +25,7 @@
 //     transparentStatusBar: true,
 //     appBarElevation: 0,
 //     // Typography
-//     fontFamily: 'Inter', // Add Inter font to pubspec.yaml
+//     fontFamily: GoogleFonts.manrope().fontFamily, // Add Inter font to pubspec.yaml
 //     // Custom component themes for shadcn look
 //     subThemesData: const FlexSubThemesData(
 //       blendOnLevel: 1,
@@ -73,7 +73,7 @@
 //     appBarOpacity: 1.0,
 //     transparentStatusBar: true,
 //     appBarElevation: 0,
-//     fontFamily: 'Inter',
+//     fontFamily: GoogleFonts.manrope().fontFamily,
 //     subThemesData: const FlexSubThemesData(
 //       blendOnLevel: 1,
 //       useM2StyleDividerInM3: false,
@@ -139,6 +139,7 @@
 import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // --- LIGHT THEME ---
@@ -193,7 +194,7 @@ class AppTheme {
       cardElevation: 0,
     ),
 
-    fontFamily: 'Inter',
+    fontFamily: GoogleFonts.lexend().fontFamily,
     useMaterial3: true,
   );
 
@@ -228,7 +229,24 @@ class AppTheme {
       cardElevation: 0,
     ),
 
-    fontFamily: 'Inter',
+    fontFamily: GoogleFonts.manrope().fontFamily,
+    textTheme: GoogleFonts.manropeTextTheme().copyWith(
+      displayLarge: GoogleFonts.manrope(letterSpacing: 0.3),
+      displayMedium: GoogleFonts.manrope(letterSpacing: 0.3),
+      displaySmall: GoogleFonts.manrope(letterSpacing: 0.3),
+      headlineLarge: GoogleFonts.manrope(letterSpacing: 0.3),
+      headlineMedium: GoogleFonts.manrope(letterSpacing: 0.3),
+      headlineSmall: GoogleFonts.manrope(letterSpacing: 0.3),
+      titleLarge: GoogleFonts.manrope(letterSpacing: 0.3),
+      titleMedium: GoogleFonts.manrope(letterSpacing: 0.3),
+      titleSmall: GoogleFonts.manrope(letterSpacing: 0.3),
+      bodyLarge: GoogleFonts.manrope(letterSpacing: 0.3),
+      bodyMedium: GoogleFonts.manrope(letterSpacing: 0.3),
+      bodySmall: GoogleFonts.manrope(letterSpacing: 0.3),
+      labelLarge: GoogleFonts.manrope(letterSpacing: 0.3),
+      labelMedium: GoogleFonts.manrope(letterSpacing: 0.3),
+      labelSmall: GoogleFonts.manrope(letterSpacing: 0.3),
+    ),
     useMaterial3: true,
   );
 }

@@ -16,7 +16,7 @@ class AppStartupCompleted extends ConsumerWidget {
       title: 'Enmay Flutter Starter',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
     );
   }
