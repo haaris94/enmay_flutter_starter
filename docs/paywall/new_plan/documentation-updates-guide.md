@@ -8,12 +8,12 @@ This guide outlines what needs to be updated in the existing documentation when 
 
 #### **Sections to Replace:**
 
-**OLD Section: iOS App Store Connect Setup**
+OLD Section: iOS App Store Connect Setup
 
 - Remove detailed product creation steps
 - Keep only basic account setup
 
-**NEW Section: RevenueCat Dashboard Setup**
+NEW Section: RevenueCat Dashboard Setup
 
 ```markdown
 ## RevenueCat Dashboard Setup (Replaces Store Setup)
@@ -45,11 +45,11 @@ This guide outlines what needs to be updated in the existing documentation when 
 4. Set display names and descriptions
 ```
 
-**OLD Section: Environment Configuration**
+OLD Section: Environment Configuration
 
 - Update to use RevenueCat API keys instead of product IDs
 
-**NEW Section: API Key Configuration**
+NEW Section: API Key Configuration
 
 ```markdown
 ## API Key Configuration
@@ -70,25 +70,24 @@ class PaywallConstants {
 
 Create different API keys for different environments in RevenueCat dashboard.
 
-```
-
 #### **Sections to Update:**
 
 **Testing Section:**
-```markdown
+
 ## Testing Your Implementation
 
 ### RevenueCat Sandbox Testing
+
 1. Create test users in RevenueCat dashboard
 2. Use test API key for development
 3. Purchase flows automatically validated
 4. Check RevenueCat dashboard for real-time events
 
 ### Store Testing (Simplified)
+
 1. Products are automatically synced from stores
 2. Test with RevenueCat sandbox users
 3. Verify webhook delivery (if configured)
-```
 
 ---
 
@@ -145,13 +144,12 @@ Widget _buildProductCard(Package package) {
 }
 ```
 
-```
-
 #### **Update Dynamic Configuration Section:**
-```markdown
+
 ## Dynamic Configuration (Enhanced with RevenueCat)
 
 ### RevenueCat Remote Config
+
 RevenueCat provides built-in remote configuration:
 
 ```dart
@@ -175,32 +173,30 @@ RevenueCat provides visual A/B testing:
 3. Measure conversion rates automatically
 4. No code changes required
 
-```
-
 ---
 
 ### 3. `testing-guide.md` - Major Updates Required
 
 #### **Add New Section at Top:**
-```markdown
+
 ## RevenueCat Testing Overview
 
 RevenueCat simplifies testing with built-in sandbox support and real-time validation.
 
 ### Benefits Over Manual Testing
+
 - ✅ Automatic receipt validation
 - ✅ Real-time subscription status
 - ✅ Built-in sandbox support
 - ✅ Dashboard monitoring
 - ✅ Webhook testing tools
-```
 
 #### **Update Development Testing Section:**
 
-```markdown
 ## Development Testing (RevenueCat)
 
 ### 1. Dashboard Configuration Testing
+
 Test your offerings configuration:
 
 ```dart
@@ -235,19 +231,19 @@ static const String revenueCatApiKey = String.fromEnvironment(
 );
 ```
 
-```
-
 #### **Replace Sandbox Testing Sections:**
-```markdown
-## RevenueCat Sandbox Testing
+
+## RevenueCat Sandbox Testings
 
 ### 1. Dashboard Setup
+
 1. Go to RevenueCat dashboard
 2. Navigate to **Users** section
 3. Add test user emails
 4. Configure test products and offerings
 
 ### 2. Testing Flow
+
 1. Use test API key in development
 2. Launch app with test configuration
 3. Purchase flows automatically validated by RevenueCat
@@ -255,13 +251,13 @@ static const String revenueCatApiKey = String.fromEnvironment(
 5. Test restore purchases (works automatically)
 
 ### 3. Verification Checklist
+
 - [ ] Products load from RevenueCat offerings
 - [ ] Purchase completes successfully  
 - [ ] Subscription status updates in real-time
 - [ ] Dashboard shows purchase event
 - [ ] Webhooks fire correctly (if configured)
 - [ ] Restore purchases works across devices
-```
 
 ---
 

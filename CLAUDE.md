@@ -42,7 +42,7 @@ All commands use the scripts defined in `pubspec.yaml`:
 
 ### Project Structure
 
-```
+```bash
 lib/src/
 ├── app/                        # App-level configuration
 │   ├── routing/               # GoRouter configuration with route guards

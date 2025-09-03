@@ -1,4 +1,4 @@
-package com.example.enmay_flutter_starter.enmay_flutter_starter
+package com.enkefa.flutterstarter
 
 import io.flutter.embedding.android.FlutterActivity
 

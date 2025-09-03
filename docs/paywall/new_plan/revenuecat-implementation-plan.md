@@ -592,14 +592,14 @@ After successful migration, you can remove these files:
 
 1. **Delete**:
 
-   ```
+   ```bash
    lib/src/features/paywall/data/datasources/remote/in_app_purchase_datasource.dart
    lib/src/features/paywall/services/paywall_service.dart
    ```
 
 2. **Keep but simplify**:
 
-   ```
+   ```bash
    lib/src/features/paywall/data/repositories/paywall_repository.dart
    lib/src/features/paywall/presentation/providers/paywall_provider.dart
    ```

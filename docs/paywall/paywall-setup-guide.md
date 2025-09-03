@@ -95,11 +95,11 @@ products: [
 2. Navigate to **Monetization** → **Subscriptions**
 3. Click **Create subscription**
 
-### 3. Create Subscription Products
+### 3. Create Subscription Productss
 
 Create subscriptions matching your iOS products:
 
-#### Weekly Trial Subscription
+#### Weekly Trial Subscriptions
 
 - **Product ID**: `your_app_weekly_trial` (must match iOS)
 - **Name**: Weekly Trial
@@ -109,7 +109,7 @@ Create subscriptions matching your iOS products:
 - **Free Trial**: 3 days
 - **Grace Period**: 3 days (recommended)
 
-#### Yearly Subscription
+#### Yearly Subscriptions
 
 - **Product ID**: `your_app_yearly` (must match iOS)
 - **Name**: Yearly Plan
