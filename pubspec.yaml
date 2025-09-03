@@ -41,6 +41,7 @@ dependencies:
   flutter_animate: ^4.5.2
   in_app_purchase: ^3.2.3
   url_launcher: ^6.3.2
+  adaptive_theme: ^3.7.1+2
 
 dev_dependencies:
   flutter_test:

@@ -2,7 +2,7 @@ import 'package:enmay_flutter_starter/src/core/exceptions/error_handler.dart';
 import 'package:enmay_flutter_starter/src/core/exceptions/failure.dart';
 import 'package:enmay_flutter_starter/src/core/constants/enums/error_context.dart';
 import 'package:enmay_flutter_starter/src/data/repositories/auth_repository.dart';
-import 'package:enmay_flutter_starter/src/providers/services/service_providers.dart';
+import 'package:enmay_flutter_starter/src/data/services/service_provider/service_providers.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_startup_provider.g.dart';

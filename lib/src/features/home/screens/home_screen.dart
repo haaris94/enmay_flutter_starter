@@ -15,6 +15,14 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              context.pushNamed(AppRoutes.settings.name);
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(

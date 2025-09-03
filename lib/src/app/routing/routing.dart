@@ -4,13 +4,14 @@ import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/reg
 import 'package:enmay_flutter_starter/src/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:enmay_flutter_starter/src/features/home/screens/home_screen.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/presentation/screens/paywall_screen.dart';
+import 'package:enmay_flutter_starter/src/features/settings/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'routing.g.dart';
 
-enum AppRoutes { home, login, register, forgotPassword, profile, paywall }
+enum AppRoutes { home, login, register, forgotPassword, profile, paywall, settings }
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -78,6 +79,12 @@ GoRouter goRouter(Ref ref) {
         path: '/paywall',
         name: AppRoutes.paywall.name,
         builder: (context, state) => const PaywallScreen(),
+      ),
+      // Settings route (protected)
+      GoRoute(
+        path: '/settings',
+        name: AppRoutes.settings.name,
+        builder: (context, state) => const SettingsScreen(),
       ),
     ],
     debugLogDiagnostics: true,

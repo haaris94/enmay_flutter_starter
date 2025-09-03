@@ -4,7 +4,8 @@
       "Bash(flutter analyze:*)",
       "Bash(git add:*)",
       "Bash(dart run build_runner build:*)",
-      "WebFetch(domain:www.reddit.com)"
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:pub.dev)"
     ],
     "deny": [],
     "ask": []
