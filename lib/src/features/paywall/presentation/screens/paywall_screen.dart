@@ -1,4 +1,5 @@
 import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/data/models/purchase_product.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/presentation/providers/paywall_provider.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/presentation/widgets/paywall_action_buttons.dart';
@@ -333,8 +334,10 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               child: const Text('Try Again'),
             ),
             const SizedBox(height: 16),
-            TextButton(
+            AppButton(
               onPressed: () => Navigator.of(context).pop(),
+              variant: AppButtonVariant.link,
+              size: AppButtonSize.sm,
               child: const Text('Close'),
             ),
           ],

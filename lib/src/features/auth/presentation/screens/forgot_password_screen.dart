@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/app_logo.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/app_text_field.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -98,26 +99,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           const SizedBox(height: 32),
           ReactiveFormConsumer(
             builder: (context, formGroup, child) {
-              return SizedBox(
-                height: 48,
-                child: ElevatedButton(
-                  onPressed: formGroup.valid ? _sendResetEmail : null,
-                  child: const Text('Send Reset Link'),
-                ),
+              return AppButton(
+                onPressed: formGroup.valid ? _sendResetEmail : null,
+                variant: AppButtonVariant.primary,
+                size: AppButtonSize.lg,
+                width: double.infinity,
+                child: const Text('Send Reset Link'),
               );
             },
           ),
           const SizedBox(height: 24),
-          TextButton(
+          AppButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text(
-              'Back to Sign In',
-              style: textTheme.bodyMedium?.copyWith(
-                color: colorScheme.primary,
-              ),
-            ),
+            variant: AppButtonVariant.link,
+            size: AppButtonSize.sm,
+            child: const Text('Back to Sign In'),
           ),
         ],
       ),
@@ -156,25 +154,25 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 48),
-        ElevatedButton(
+        AppButton(
           onPressed: () {
             Navigator.pop(context);
           },
+          variant: AppButtonVariant.primary,
+          size: AppButtonSize.lg,
+          width: double.infinity,
           child: const Text('Back to Sign In'),
         ),
         const SizedBox(height: 16),
-        TextButton(
+        AppButton(
           onPressed: () {
             setState(() {
               _emailSent = false;
             });
           },
-          child: Text(
-            'Try Different Email',
-            style: textTheme.bodyMedium?.copyWith(
-              color: colorScheme.primary,
-            ),
-          ),
+          variant: AppButtonVariant.link,
+          size: AppButtonSize.sm,
+          child: const Text('Try Different Email'),
         ),
       ],
     );

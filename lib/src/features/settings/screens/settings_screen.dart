@@ -5,6 +5,7 @@ import 'package:enmay_flutter_starter/src/features/settings/widgets/settings_sec
 import 'package:enmay_flutter_starter/src/features/settings/widgets/settings_tile.dart';
 import 'package:enmay_flutter_starter/src/core/exceptions/error_handler.dart';
 import 'package:enmay_flutter_starter/src/core/constants/enums/error_context.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:feedback/feedback.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         backgroundColor: appColors.background,
         elevation: 0,
         scrolledUnderElevation: 0,
-        leading: IconButton(
+        leading: AppIconButton(
           icon: Icon(
             Icons.arrow_back_ios,
             color: appColors.foreground,
@@ -344,14 +345,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           style: TextStyle(color: appColors.mutedForeground),
         ),
         actions: [
-          TextButton(
+          AppButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: appColors.mutedForeground),
-            ),
+            variant: AppButtonVariant.ghost,
+            size: AppButtonSize.sm,
+            child: const Text('Cancel'),
           ),
-          TextButton(
+          AppButton(
             onPressed: () async {
               final navigator = Navigator.of(context);
               final router = GoRouter.of(context);
@@ -374,10 +374,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 }
               }
             },
-            child: Text(
-              'Sign Out',
-              style: TextStyle(color: appColors.destructive),
-            ),
+            variant: AppButtonVariant.destructive,
+            size: AppButtonSize.sm,
+            child: const Text('Sign Out'),
           ),
         ],
       ),
@@ -475,14 +474,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           style: TextStyle(color: appColors.mutedForeground),
         ),
         actions: [
-          TextButton(
+          AppButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(
-              'Cancel',
-              style: TextStyle(color: appColors.mutedForeground),
-            ),
+            variant: AppButtonVariant.ghost,
+            size: AppButtonSize.sm,
+            child: const Text('Cancel'),
           ),
-          TextButton(
+          AppButton(
             onPressed: () async {
               Navigator.of(context).pop();
               try {
@@ -511,10 +509,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 }
               }
             },
-            child: Text(
-              'Clear',
-              style: TextStyle(color: appColors.destructive),
-            ),
+            variant: AppButtonVariant.destructive,
+            size: AppButtonSize.sm,
+            child: const Text('Clear'),
           ),
         ],
       ),

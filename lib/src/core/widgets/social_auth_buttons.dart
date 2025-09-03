@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 
 class SocialAuthButtons extends StatelessWidget {
   const SocialAuthButtons({
@@ -75,16 +76,11 @@ class _SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    
-    return OutlinedButton(
+    return AppIconButton(
       onPressed: onPressed,
-      style: OutlinedButton.styleFrom(
-        shape: const CircleBorder(),
-        padding: const EdgeInsets.all(16),
-        side: BorderSide(color: colorScheme.outline),
-      ),
-      child: FaIcon(
+      variant: AppButtonVariant.outline,
+      size: AppButtonSize.lg,
+      icon: FaIcon(
         icon,
         color: color,
         size: 20,

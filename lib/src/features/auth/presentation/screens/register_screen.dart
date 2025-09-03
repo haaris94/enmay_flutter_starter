@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/app_logo.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/app_text_field.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/social_auth_buttons.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import '../../provider/auth_provider.dart';
 
@@ -144,18 +145,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                     ReactiveFormConsumer(
                       builder: (context, formGroup, child) {
                         final isLoading = authState.isLoading;
-                        return SizedBox(
-                          height: 48,
-                          child: ElevatedButton(
-                            onPressed: (formGroup.valid && !isLoading) ? _register : null,
-                            child: isLoading
-                                ? const SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: CircularProgressIndicator(strokeWidth: 2),
-                                  )
-                                : const Text('Create Account'),
-                          ),
+                        return AppButton(
+                          onPressed: (formGroup.valid && !isLoading) ? _register : null,
+                          variant: AppButtonVariant.primary,
+                          size: AppButtonSize.lg,
+                          width: double.infinity,
+                          isLoading: isLoading,
+                          child: const Text('Create Account'),
                         );
                       },
                     ),
@@ -175,22 +171,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                             color: colorScheme.onSurfaceVariant,
                           ),
                         ),
-                        TextButton(
+                        AppButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            minimumSize: Size.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          ),
-                          child: Text(
-                            'Sign in',
-                            style: textTheme.bodyMedium?.copyWith(
-                              color: colorScheme.primary,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          variant: AppButtonVariant.link,
+                          size: AppButtonSize.sm,
+                          child: const Text('Sign in'),
                         ),
                       ],
                     ),

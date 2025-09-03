@@ -1,6 +1,7 @@
 import 'package:enmay_flutter_starter/src/core/widgets/app_logo.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/app_text_field.dart';
 import 'package:enmay_flutter_starter/src/core/widgets/social_auth_buttons.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -137,19 +138,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             ),
                           ],
                         ),
-                        TextButton(
+                        AppButton(
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
                             );
                           },
-                          child: Text(
-                            'Forgot password?',
-                            style: textTheme.bodyMedium?.copyWith(
-                              color: colorScheme.primary,
-                            ),
-                          ),
+                          variant: AppButtonVariant.link,
+                          size: AppButtonSize.sm,
+                          child: const Text('Forgot password?'),
                         ),
                       ],
                     ),
@@ -159,15 +157,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         final isLoading = authState.isLoading;
                         return SizedBox(
                           height: 48,
-                          child: ElevatedButton(
+                          child: AppButton(
                             onPressed: (formGroup.valid && !isLoading) ? _login : null,
-                            child: isLoading
-                                ? const SizedBox(
-                                    height: 20,
-                                    width: 20,
-                                    child: CircularProgressIndicator(strokeWidth: 2),
-                                  )
-                                : const Text('Sign In'),
+                            variant: AppButtonVariant.primary,
+                            size: AppButtonSize.lg,
+                            isLoading: isLoading,
+                            width: double.infinity,
+                            child: const Text('Sign In'),
                           ),
                         );
                       },
@@ -188,25 +184,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             color: colorScheme.onSurfaceVariant,
                           ),
                         ),
-                        TextButton(
+                        AppButton(
                           onPressed: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) => const RegisterScreen()),
                             );
                           },
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.zero,
-                            minimumSize: Size.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          ),
-                          child: Text(
-                            'Sign up',
-                            style: textTheme.bodyMedium?.copyWith(
-                              color: colorScheme.primary,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          variant: AppButtonVariant.link,
+                          size: AppButtonSize.sm,
+                          child: const Text('Sign up'),
                         ),
                       ],
                     ),

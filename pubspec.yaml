@@ -44,6 +44,7 @@ dependencies:
   adaptive_theme: ^3.7.1+2
   adaptive_dialog: ^2.4.2
   feedback: ^3.2.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

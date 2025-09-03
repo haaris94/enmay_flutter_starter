@@ -1,4 +1,5 @@
 import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -132,8 +133,10 @@ class PaywallActionButtons extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 16),
-              TextButton(
+              AppButton(
                 onPressed: () => Navigator.pop(context),
+                variant: AppButtonVariant.link,
+                size: AppButtonSize.sm,
                 child: const Text('Close'),
               ),
             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:enmay_flutter_starter/src/core/widgets/app_button.dart';
 
 /// This widget is shown if there is an error while the app is loading
 ///
@@ -101,15 +102,18 @@ class AppStartupErrorWidget extends StatelessWidget {
                 // Retry button
                 SizedBox(
                   width: double.infinity,
-                  child: ElevatedButton.icon(
+                  child: AppButton(
                     onPressed: onRetry,
-                    icon: const Icon(Icons.refresh_rounded),
-                    label: const Text('Try Again'),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+                    variant: AppButtonVariant.primary,
+                    size: AppButtonSize.lg,
+                    width: double.infinity,
+                    child: const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.refresh_rounded),
+                        SizedBox(width: 8),
+                        Text('Try Again'),
+                      ],
                     ),
                   ),
                 ),
