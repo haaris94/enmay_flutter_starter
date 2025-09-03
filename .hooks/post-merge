@@ -1,0 +1,15 @@
+#!/bin/sh
+# Post-merge hook for Flutter development
+# Automatically updates dependencies and generates code after pulling changes
+
+echo "Running post-merge setup..."
+
+# Get dependencies (in case pubspec.yaml changed)
+echo "📦 Getting dependencies..."
+flutter pub get
+
+# Generate code files (in case any *.dart files changed)
+echo "🔨 Generating code..."
+dart run build_runner build --delete-conflicting-outputs
+
+echo "✅ Post-merge setup complete"

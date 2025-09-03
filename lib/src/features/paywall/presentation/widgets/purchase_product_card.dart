@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/data/models/purchase_product.dart';
 import 'package:flutter/material.dart';
 
@@ -20,9 +20,10 @@ class PurchaseProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderColor = isSelected ? context.primary : context.outline.withOpacity(0.3);
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    final borderColor = isSelected ? appColors.primary! : appColors.border!.withValues(alpha: 0.3);
     final backgroundColor = isSelected 
-        ? context.primary.withOpacity(0.05)
+        ? appColors.primary!.withValues(alpha: 0.05)
         : Colors.transparent;
 
     return GestureDetector(
@@ -46,7 +47,7 @@ class PurchaseProductCard extends StatelessWidget {
                     product.planName,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: context.onSurface,
+                      color: appColors.foreground,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -65,11 +66,13 @@ class PurchaseProductCard extends StatelessWidget {
   }
 
   Widget _buildPriceRow(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     if (product.hasTrial) {
       return Text(
         'then ${product.price} per ${product.duration}',
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: context.onSurface.withOpacity(0.8),
+          color: appColors.foreground!.withValues(alpha: 0.8),
         ),
       );
     }
@@ -81,7 +84,7 @@ class PurchaseProductCard extends StatelessWidget {
             _formatPrice(fullPrice!),
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               decoration: TextDecoration.lineThrough,
-              color: context.onSurface.withOpacity(0.4),
+              color: appColors.foreground!.withValues(alpha: 0.4),
             ),
           ),
           const SizedBox(width: 4),
@@ -89,7 +92,7 @@ class PurchaseProductCard extends StatelessWidget {
         Text(
           '${product.price} per ${product.duration}',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: context.onSurface.withOpacity(0.8),
+            color: appColors.foreground!.withValues(alpha: 0.8),
           ),
         ),
       ],
@@ -125,15 +128,17 @@ class PurchaseProductCard extends StatelessWidget {
   }
 
   Widget _buildSelectionIndicator(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       width: 20,
       height: 20,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: isSelected ? context.primary : Colors.transparent,
+        color: isSelected ? appColors.primary : Colors.transparent,
         border: Border.all(
-          color: isSelected ? context.primary : context.outline.withOpacity(0.3),
+          color: isSelected ? appColors.primary! : appColors.border!.withValues(alpha: 0.3),
           width: 2,
         ),
       ),
@@ -141,7 +146,7 @@ class PurchaseProductCard extends StatelessWidget {
           ? Icon(
               Icons.check,
               size: 14,
-              color: context.onPrimary,
+              color: appColors.primaryForeground,
             )
           : null,
     );

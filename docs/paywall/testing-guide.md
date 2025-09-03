@@ -156,7 +156,7 @@ class PaywallConfig {
 }
 ```
 
-### 3. Testing Scenarios
+### 3. Testing Scenarios situation
 
 - Test purchases with different payment methods
 - Test subscription management from Play Store

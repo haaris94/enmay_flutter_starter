@@ -48,4 +48,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-pubspec.lock
+
+# Keep dependency lock files for consistent builds across machines
+# pubspec.lock - Keep committed for consistent dependency versions across machines
+# ios/Podfile.lock - Keep committed for consistent iOS builds
+
+# Platform-specific build caches that should be ignored
+**/ios/Flutter/.last_build_id
+**/android/.gradle/
+**/android/app/build/
+**/build/
+
+# IDE and editor specific files (optional - comment out if you want to share)
+.vscode/settings.json
+.vscode/launch.json

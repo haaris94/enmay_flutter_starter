@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.0
+  sdk: ^3.8.0
 
 dependencies:
   flutter:
@@ -19,7 +19,6 @@ dependencies:
   dartz: ^0.10.1
   firebase_core: ^4.0.0
   firebase_auth: ^6.0.1
-  firebase_messaging: ^16.0.0
   firebase_crashlytics: ^5.0.0
   cloud_firestore: ^6.0.0
   shared_preferences: ^2.5.3
@@ -58,3 +57,30 @@ flutter:
   assets:
     - assets/images/
     - assets/images/logos/
+
+# Development scripts for cross-platform consistency
+scripts:
+  # Code generation
+  generate: dart run build_runner build --delete-conflicting-outputs
+  generate:watch: dart run build_runner watch --delete-conflicting-outputs
+  generate:clean: dart run build_runner clean
+  
+  # Testing
+  test: flutter test
+  test:coverage: flutter test --coverage
+  
+  # Analysis and linting
+  analyze: flutter analyze
+  format: dart format lib/ test/
+  format:check: dart format --set-exit-if-changed lib/ test/
+  
+  # iOS specific
+  ios:pods: cd ios && pod install --repo-update
+  ios:clean: cd ios && pod deintegrate && pod install
+  
+  # Android specific  
+  android:clean: cd android && ./gradlew clean
+  
+  # Full clean and setup
+  setup: flutter clean && flutter pub get && dart run build_runner build --delete-conflicting-outputs
+  fresh: flutter clean && flutter pub get && dart run build_runner build --delete-conflicting-outputs && cd ios && pod install
