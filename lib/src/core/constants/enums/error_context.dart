@@ -26,6 +26,19 @@ enum ErrorContext {
   inAppPurchase,
   localStorage,
 
+  // Review contexts
+  reviewSystem,
+  
+  // Data contexts
+  dataLoading,
+  dataSaving,
+  dataDeletion,
+  
+  // Business logic contexts
+  businessLogic,
+  userAction,
+  initialization,
+
   // Generic contexts
   unknown,
 }
