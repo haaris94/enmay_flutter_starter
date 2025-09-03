@@ -26,6 +26,7 @@ GoRouter goRouter(Ref ref) {
     initialLocation: _initialLocation,
     refreshListenable: routeGuard,
     redirect: (context, state) {
+      return null;
       final isAuthenticated = routeGuard.isAuthenticated;
       final isEmailVerified = routeGuard.isEmailVerified;
       final currentScreen = state.uri.toString();
