@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/data/models/purchase_product.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +14,7 @@ class PurchaseFeatureItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
     final effectiveColor = color ?? Color(feature.colorValue);
     
     return Padding(
@@ -31,7 +32,7 @@ class PurchaseFeatureItem extends StatelessWidget {
               feature.title,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 fontSize: 19,
-                color: context.onSurface,
+                color: appColors.foreground,
               ),
             ),
           ),

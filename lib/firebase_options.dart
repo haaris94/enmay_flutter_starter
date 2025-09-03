@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-starter-df0a4.firebasestorage.app',
     iosBundleId: 'com.example.enmayflutterstarter.enmayFlutterStarter',
   );
+
 }

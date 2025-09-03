@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -86,6 +86,8 @@ class _PaywallHeroSectionState extends State<PaywallHeroSection>
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return Column(
       children: [
         // Hero Image with Shake Animation
@@ -114,7 +116,7 @@ class _PaywallHeroSectionState extends State<PaywallHeroSection>
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontSize: 30,
             fontWeight: FontWeight.w600,
-            color: context.onSurface,
+            color: appColors.foreground,
           ),
           textAlign: TextAlign.center,
         ),
@@ -136,6 +138,8 @@ class _PaywallHeroSectionState extends State<PaywallHeroSection>
   }
 
   Widget _buildDefaultHeroIcon(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return Container(
       width: 120,
       height: 120,
@@ -144,14 +148,14 @@ class _PaywallHeroSectionState extends State<PaywallHeroSection>
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            context.primary,
-            context.primary.withOpacity(0.7),
+            appColors.primary!,
+            appColors.primary!.withValues(alpha: 0.7),
           ],
         ),
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: context.primary.withOpacity(0.3),
+            color: appColors.primary!.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 8),
           ),
@@ -160,11 +164,11 @@ class _PaywallHeroSectionState extends State<PaywallHeroSection>
       child: Icon(
         Icons.workspace_premium,
         size: 60,
-        color: context.onPrimary,
+        color: appColors.primaryForeground,
       ),
     )
       .animate(onPlay: (controller) => controller.repeat(reverse: true))
-      .shimmer(duration: 2000.ms, color: Colors.white.withOpacity(0.3))
+      .shimmer(duration: 2000.ms, color: Colors.white.withValues(alpha: 0.3))
       .then(delay: 1000.ms)
       .scale(
         begin: const Offset(1.0, 1.0),

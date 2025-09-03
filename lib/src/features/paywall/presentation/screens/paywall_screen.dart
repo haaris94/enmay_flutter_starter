@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/data/models/purchase_product.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/presentation/providers/paywall_provider.dart';
 import 'package:enmay_flutter_starter/src/features/paywall/presentation/widgets/paywall_action_buttons.dart';
@@ -57,9 +57,11 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   @override
   Widget build(BuildContext context) {
     final paywallState = ref.watch(paywallNotifierProvider);
+    final theme = Theme.of(context);
+    final appColors = theme.extension<AppColors>()!;
 
     return Scaffold(
-      backgroundColor: context.surface,
+      backgroundColor: appColors.container,
       body: SafeArea(
         child: paywallState.when(
           data: (state) => _buildPaywallContent(context, state),
@@ -127,7 +129,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
         // Loading Overlay
         if (state.isPurchasing || state.isLoading)
           Container(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             child: const Center(
               child: CircularProgressIndicator(),
             ),
@@ -137,6 +139,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Widget _buildTopBar(BuildContext context, PaywallState state) {
+    final theme = Theme.of(context);
+    final appColors = theme.extension<AppColors>()!;
+
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Row(
@@ -148,7 +153,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               child: Icon(
                 Icons.close,
                 size: 20,
-                color: context.onSurface.withOpacity(0.6),
+                color: appColors.foreground!.withValues(alpha: 0.6),
               ),
             )
           else if (_config?.hasCooldown == true)
@@ -158,9 +163,9 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               child: CircularProgressIndicator(
                 value: state.cooldownProgress,
                 strokeWidth: 2,
-                backgroundColor: context.outline.withOpacity(0.2),
+                backgroundColor: appColors.border!.withValues(alpha: 0.2),
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  context.primary.withOpacity(0.3 + 0.7 * state.cooldownProgress),
+                  appColors.primary!.withValues(alpha: 0.3 + 0.7 * state.cooldownProgress),
                 ),
               ),
             ),
@@ -170,11 +175,13 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Widget _buildFeaturesList(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return Column(
       children: _config!.features
           .map((feature) => PurchaseFeatureItem(
                 feature: feature,
-                color: context.primary,
+                color: appColors.primary!,
               ))
           .toList(),
     );
@@ -211,10 +218,12 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
     final trialProduct = state.products.firstWhere((p) => p.hasTrial);
     final isTrialSelected = state.selectedProductId == trialProduct.id;
 
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: context.primary.withOpacity(0.05),
+        color: appColors.primary!.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -224,7 +233,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
               'Free Trial Enabled',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
-                color: context.onSurface,
+                color: appColors.foreground,
               ),
             ),
           ),
@@ -243,7 +252,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
                 notifier.selectProduct(nonTrialProduct.id);
               }
             },
-            activeColor: context.primary,
+            activeThumbColor: appColors.primary,
           ),
         ],
       ),
@@ -288,6 +297,8 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
   }
 
   Widget _buildErrorState(BuildContext context, Object error) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
@@ -297,7 +308,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             Icon(
               Icons.error_outline,
               size: 64,
-              color: context.error,
+              color: appColors.destructive,
             ),
             const SizedBox(height: 16),
             Text(
@@ -309,7 +320,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
             Text(
               error.toString(),
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: context.onSurface.withOpacity(0.7),
+                color: appColors.foreground!.withValues(alpha: 0.7),
               ),
               textAlign: TextAlign.center,
             ),
@@ -337,7 +348,7 @@ class _PaywallScreenState extends ConsumerState<PaywallScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message),
-          backgroundColor: context.error,
+          backgroundColor: Theme.of(context).extension<AppColors>()!.destructive,
         ),
       );
     }

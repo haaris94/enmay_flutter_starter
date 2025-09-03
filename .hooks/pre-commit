@@ -1,0 +1,23 @@
+#!/bin/sh
+# Pre-commit hook for Flutter development
+# Automatically generates code and formats before committing
+
+echo "Running pre-commit checks..."
+
+# Generate code files
+echo "🔨 Generating code..."
+dart run build_runner build --delete-conflicting-outputs
+
+# Format code
+echo "🎨 Formatting code..."
+dart format lib/ test/
+
+# Add any new generated files
+git add **/*.g.dart **/*.freezed.dart
+
+# Check if there are any formatting changes
+if ! git diff --cached --exit-code --quiet lib/ test/; then
+    echo "✅ Code formatted and staged"
+fi
+
+echo "✅ Pre-commit checks complete"

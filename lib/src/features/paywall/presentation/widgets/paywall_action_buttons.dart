@@ -1,4 +1,4 @@
-import 'package:enmay_flutter_starter/src/app/theme/app_theme.dart';
+import 'package:enmay_flutter_starter/src/app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -24,6 +24,8 @@ class PaywallActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColors>()!;
+    
     return Column(
       children: [
         // Main Purchase Button
@@ -33,8 +35,8 @@ class PaywallActionButtons extends StatelessWidget {
           child: ElevatedButton(
             onPressed: (isPurchasing || isLoading) ? null : onPurchase,
             style: ElevatedButton.styleFrom(
-              backgroundColor: context.primary,
-              foregroundColor: context.onPrimary,
+              backgroundColor: appColors.primary,
+              foregroundColor: appColors.primaryForeground,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -46,7 +48,7 @@ class PaywallActionButtons extends StatelessWidget {
                     width: 20,
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(context.onPrimary),
+                      valueColor: AlwaysStoppedAnimation<Color>(appColors.primaryForeground!),
                     ),
                   )
                 : Row(
@@ -55,7 +57,7 @@ class PaywallActionButtons extends StatelessWidget {
                       Text(
                         callToActionText,
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: context.onPrimary,
+                          color: appColors.primaryForeground,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -63,7 +65,7 @@ class PaywallActionButtons extends StatelessWidget {
                       Icon(
                         Icons.arrow_forward,
                         size: 18,
-                        color: context.onPrimary,
+                        color: appColors.primaryForeground,
                       ),
                     ],
                   ),
@@ -164,15 +166,18 @@ class _FooterLink extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
-            bottom: BorderSide(color: Colors.grey, width: 1),
+            bottom: BorderSide(
+              color: Theme.of(context).extension<AppColors>()!.mutedForeground!,
+              width: 1,
+            ),
           ),
         ),
         child: Text(
           text,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Colors.grey,
+            color: Theme.of(context).extension<AppColors>()!.mutedForeground,
             fontSize: 15,
           ),
         ),

@@ -1,4 +1,3 @@
-import 'package:enmay_flutter_starter/src/core/logging/console_logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
