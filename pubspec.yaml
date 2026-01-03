@@ -64,29 +64,18 @@ flutter:
     - assets/images/
     - assets/images/logos/
 
-# Development scripts for cross-platform consistency
 scripts:
+  # New project setup
+  setup:new: flutter clean && flutter pub get && dart run build_runner build --delete-conflicting-outputs
+  setup:full: flutter clean && flutter pub get && dart run build_runner build --delete-conflicting-outputs && cd ios && pod install --repo-update
+  setup:verify: flutter analyze && flutter test
+  
+  # Package management
+  change:package: dart run change_app_package_name:main
+  
   # Code generation
   generate: dart run build_runner build --delete-conflicting-outputs
   generate:watch: dart run build_runner watch --delete-conflicting-outputs
-  generate:clean: dart run build_runner clean
   
-  # Testing
-  test: flutter test
-  test:coverage: flutter test --coverage
-  
-  # Analysis and linting
-  analyze: flutter analyze
-  format: dart format lib/ test/
-  format:check: dart format --set-exit-if-changed lib/ test/
-  
-  # iOS specific
-  ios:pods: cd ios && pod install --repo-update
-  ios:clean: cd ios && pod deintegrate && pod install
-  
-  # Android specific  
-  android:clean: cd android && ./gradlew clean
-  
-  # Full clean and setup
-  setup: flutter clean && flutter pub get && dart run build_runner build --delete-conflicting-outputs
-  fresh: flutter clean && flutter pub get && dart run build_runner build --delete-conflicting-outputs && cd ios && pod install
+  # Platform setup
+  ios:setup: cd ios && pod install --repo-update
